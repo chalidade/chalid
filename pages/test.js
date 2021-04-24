@@ -1,3 +1,3 @@
 export default function test() {
-  return "Hello Chalid Ade rahman from Next.Js";
+  return "Hello Chalid rahman from Next.Js";
 }
