@@ -1,4 +1,4 @@
-export default function button({ value, background, color, padding, border }) {
+export default function button({ value, background, color, padding, border, radius }) {
   return (
     <button
       style={{
@@ -6,6 +6,7 @@ export default function button({ value, background, color, padding, border }) {
         color: color,
         padding: padding,
         border: border,
+        borderRadius:radius
       }}
     >
       {value}
