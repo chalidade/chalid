@@ -4,6 +4,18 @@ import AtomText from "../components/atoms/text";
 import AtomButton from "../components/atoms/button";
 
 export default function billing() {
+
+  const handleBilling = () => {
+    let json = {
+      name : "",
+      email : "",
+      telpon : "",
+      ketarangan : "",
+      alamat : "",
+      cart: []
+    }
+  }
+
   return (
     <>
       <OrganismsNav />
@@ -58,6 +70,7 @@ export default function billing() {
               </div>
             </div>
             <AtomButton
+              onClick={handleBilling}
               value="Pay"
               width="262px"
               customClass="mt-3 p-2"

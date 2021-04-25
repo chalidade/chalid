@@ -3,6 +3,7 @@ import AtomButton from "../components/atoms/button";
 import { list_product } from "../components/variables/product";
 import MoleculeProductList from "../components/molecules/product_list";
 import OrganismNav from "../components/organisms/nav";
+import Link from "next/link";
 import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
 
 export default function test() {
@@ -48,21 +49,24 @@ export default function test() {
           <center>
             <div className="row container">
               <div className="col-12 text-left">
+                <a href="page" />
                 <AtomText value="Forever bag" size="24px" weight="bold" />
               </div>
               {products.map((product, index) => {
                 return (
                   <>
-                    <div className="col-md-3">
-                      <MoleculeProductList
-                        image={product.image[0]}
-                        name={product.name}
-                        category={product.category}
-                        price={product.price}
-                        id={product.id}
-                        index={index}
-                      />
-                    </div>
+                    <Link href="/detail">
+                      <div className="col-md-3">
+                        <MoleculeProductList
+                          image={product.image[0]}
+                          name={product.name}
+                          category={product.category}
+                          price={product.price}
+                          id={product.id}
+                          index={index}
+                        />
+                      </div>
+                    </Link>
                   </>
                 );
               })}
