@@ -11,6 +11,9 @@ export const list_product = () => [
       "/products/product_1.svg",
     ],
     price: "$125.00",
+    stock: "1",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: 2,
@@ -23,6 +26,9 @@ export const list_product = () => [
       "/products/product_2.svg",
     ],
     price: "$45.00",
+    stock: "1",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: 3,
@@ -35,6 +41,9 @@ export const list_product = () => [
       "/products/product_3.svg",
     ],
     price: "$75.00",
+    stock: "1",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: 4,
@@ -47,6 +56,9 @@ export const list_product = () => [
       "/products/product_4.svg",
     ],
     price: "$50.00",
+    stock: "1",
+    desc:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
 ];
 export const listCart = [];

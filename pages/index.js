@@ -1,13 +1,15 @@
 import AtomText from "../components/atoms/text";
 import AtomButton from "../components/atoms/button";
 import { list_product } from "../components/variables/product";
+import { useRouter } from "next/router";
 import MoleculeProductList from "../components/molecules/product_list";
 import OrganismNav from "../components/organisms/nav";
 import Link from "next/link";
 import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
 
 export default function test() {
-  let products = list_product();
+  const products = list_product();
+  const router = useRouter();
   return (
     <>
       <OrganismNav />
@@ -55,8 +57,7 @@ export default function test() {
               {products.map((product, index) => {
                 return (
                   <>
-                    <Link href="/detail">
-                      <div className="col-md-3">
+                      <div className="col-md-3 mt-3">
                         <MoleculeProductList
                           image={product.image[0]}
                           name={product.name}
@@ -64,9 +65,9 @@ export default function test() {
                           price={product.price}
                           id={product.id}
                           index={index}
+                          href="/product/[id]"
                         />
                       </div>
-                    </Link>
                   </>
                 );
               })}

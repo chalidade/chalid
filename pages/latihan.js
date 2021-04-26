@@ -1,27 +1,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { list_product } from "../components/variables/product";
 
 export default function latihan() {
-  const [data, setData] = useState();
-  const [dataConfirm, setDataConfirm] = useState();
+  console.log(list_product);
 
-  const handleSubmit = () => {
-    console.log("Hi, Chalid");
-  }
-
-  const handleChangeInput = e => {
-    setData(e.target.value);
-  }
-
-  const handleChangeInputConfirm = e => {
-    setDataConfirm(e.target.value);
-  }
-
-
-  return (<>
-    <input type="text" onChange={handleChangeInput} />
-    <input type="text" onChange={handleChangeInputConfirm} style={{border:data == dataConfirm ? "solid thin #eee" : "solid thin red"}} />
-    <button onClick={handleSubmit}>Submit</button>
-    <p style={{color:data == dataConfirm ? "black" : "red" }}>{data}</p>
-    </>);
+  return (
+    <>
+      {list_product.map((product) => {
+        return (
+          <>
+            <p>{product.name}</p>
+            <img src={product.image[0]} />
+            <p>{product.price}</p>
+            <hr />
+          </>
+        );
+      })}
+    </>
+  );
 }
