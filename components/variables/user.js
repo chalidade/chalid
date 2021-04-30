@@ -18,3 +18,14 @@ export const list_users = [
     password: "aziz123",
   },
 ];
+
+let is_login = false;
+
+export function check_login() {
+  return is_login;
+}
+
+export function set_login(value) {
+  is_login = value;
+  return is_login;
+}
