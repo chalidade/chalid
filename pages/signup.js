@@ -2,11 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import AtomText from "../components/atoms/text";
 import AtomButton from "../components/atoms/button";
-import { useState } from "react";
 import { list_users } from "../components/variables/user";
 import MoleculesInputForm from "../components/molecules/input_form";
+import { fetch_data } from "../components/variables/api";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function signUp() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -24,23 +27,41 @@ export default function signUp() {
   };
 
   const handleRegistration = () => {
-    if (password == passwordConfirmation) {
-      let check = list_users.filter(
-        (data) => data.username == username && data.password == password
-      );
+    let json = {
+      "username":username,
+      "password":password
+    }
 
-      if (!check.length) {
-        let newUser = {
-          username:username,
-          password:password
+    if (password == passwordConfirmation) {
+      fetch_data("POST", "http://localhost/bootcam-api/user", json).then(function (
+        result
+      ) {
+
+        if (result.success) {
+          router.push("/signin");
+          alert(result.data);
+        } else {
+          alert(result.data);
         }
-        alert("Success Register User");
-        list_users.push(newUser);
-        console.log(list_users);
-      } else {
-        alert("User Already Registered");
-        console.log(list_users);
-      }
+
+      });
+
+      // let check = list_users.filter(
+      //   (data) => data.username == username && data.password == password
+      // );
+      //
+      // if (!check.length) {
+      //   let newUser = {
+      //     username:username,
+      //     password:password
+      //   }
+      //   alert("Success Register User");
+      //   list_users.push(newUser);
+      //   console.log(list_users);
+      // } else {
+      //   alert("User Already Registered");
+      //   console.log(list_users);
+      // }
     } else {
       alert("Check Password Confirmation");
     }

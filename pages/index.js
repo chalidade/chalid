@@ -6,10 +6,32 @@ import MoleculeProductList from "../components/molecules/product_list";
 import OrganismNav from "../components/organisms/nav";
 import Link from "next/link";
 import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { fetch_data } from "../components/variables/api";
+import { useState, useEffect } from "react";
+
+let json = {
+  username: "Rico test",
+  password: "123",
+  email: "chalid",
+  address: "testing",
+  phone: "085784566522",
+};
 
 export default function test() {
   const products = list_product();
   const router = useRouter();
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    fetch_data("GET", "http://localhost/bootcam-api/user", json).then(function (
+      result
+    ) {
+      setUserData(result);
+    });
+  }, []);
+
+  console.log(userData);
+
   return (
     <>
       <OrganismNav />
@@ -53,21 +75,29 @@ export default function test() {
               <div className="col-12 text-left">
                 <a href="page" />
                 <AtomText value="Forever bag" size="24px" weight="bold" />
+                {/*userData.map((user) => {
+                  return (
+                    <>
+                      <p>{user.USER_NAME}</p>
+                      <p>{user.USER_PASSWORD}</p>
+                    </>
+                  );
+                })*/}
               </div>
               {products.map((product, index) => {
                 return (
                   <>
-                      <div className="col-md-3 mt-3">
-                        <MoleculeProductList
-                          image={product.image[0]}
-                          name={product.name}
-                          category={product.category}
-                          price={product.price}
-                          id={product.id}
-                          index={index}
-                          href="/product/[id]"
-                        />
-                      </div>
+                    <div className="col-md-3 mt-3">
+                      <MoleculeProductList
+                        image={product.image[0]}
+                        name={product.name}
+                        category={product.category}
+                        price={product.price}
+                        id={product.id}
+                        index={index}
+                        href="/product/[id]"
+                      />
+                    </div>
                   </>
                 );
               })}

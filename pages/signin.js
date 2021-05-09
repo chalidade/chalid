@@ -5,7 +5,9 @@ import MoleculesInputForm from "../components/molecules/input_form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { list_users } from "../components/variables/user";
-import { useState } from "react";
+import { fetch_data } from "../components/variables/api";
+import { useState, useEffect } from "react";
+
 
 export default function signIn() {
   const router = useRouter();
@@ -21,18 +23,27 @@ export default function signIn() {
   };
 
   const handleLogin = () => {
-    let check = list_users.filter(
-      (data) => data.username == username && data.password == password
-    );
-
-    if (check.length) {
-      alert("Login Success");
-      router.push("/billing");
-    } else if (username.length == 0) {
-      alert("Username Empty");
-    } else {
-      alert("Username/Password Wrong");
+    let json = {
+      "username" : username,
+      "password" : password
     }
+    fetch_data("POST", "http://localhost/bootcam-api/user/login", json).then(function (
+      result
+    ) {
+      if (result.success) {
+        alert("Login Success");
+        router.push("/billing");
+      } else if (username.length == 0) {
+        alert("Username Empty");
+      } else {
+        alert(result.data);
+      }
+    });
+    // let check = list_users.filter(
+    //   (data) => data.username == username && data.password == password
+    // );
+    //
+
   };
 
   return (
