@@ -32,7 +32,8 @@ export default function signIn() {
     ) {
       if (result.success) {
         alert("Login Success");
-        router.push("/billing");
+        router.push("/");
+        localStorage.setItem("user_id", JSON.stringify(result.data));
       } else if (username.length == 0) {
         alert("Username Empty");
       } else {

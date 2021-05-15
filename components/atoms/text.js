@@ -5,9 +5,11 @@ export default function text({
   size,
   weight,
   marginTop,
+  onClick,
 }) {
   return (
     <p
+      onClick={onClick}
       style={{
         color: color,
         margin: margin,

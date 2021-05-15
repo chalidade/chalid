@@ -28,23 +28,27 @@ export default function signUp() {
 
   const handleRegistration = () => {
     let json = {
-      "username":username,
-      "password":password
-    }
+      action: "save",
+      table: "tx_hdr_user",
+      data: [
+        {
+          "USER_NAME": username,
+          "USER_PASSWORD": password,
+        },
+      ],
+    };
 
     if (password == passwordConfirmation) {
-      fetch_data("POST", "http://localhost/bootcam-api/user", json).then(function (
-        result
-      ) {
-
-        if (result.success) {
-          router.push("/signin");
-          alert(result.data);
-        } else {
-          alert(result.data);
+      fetch_data("POST", "http://localhost/bootcam-api/store", json).then(
+        function (result) {
+          if (result.success) {
+            router.push("/signin");
+            alert(result.message);
+          } else {
+            alert(result.message);
+          }
         }
-
-      });
+      );
 
       // let check = list_users.filter(
       //   (data) => data.username == username && data.password == password
